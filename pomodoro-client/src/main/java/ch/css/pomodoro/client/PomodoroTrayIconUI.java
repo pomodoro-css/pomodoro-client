@@ -8,50 +8,44 @@ import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
-import ch.css.tcf.swegadget.gui.utils.IconFactory;
-
 public class PomodoroTrayIconUI {
 
-   private TrayIcon trayIcon;
+	private TrayIcon trayIcon;
 
-   public PomodoroTrayIconUI(MouseListener mouseListener, ActionListener actionListener) {
+	public PomodoroTrayIconUI(MouseListener mouseListener, ActionListener actionListener) {
 
-      final PopupMenu popup = new PopupMenu();
-      trayIcon = new TrayIcon(IconFactory.createOkIconBig().getImage());
+		final PopupMenu popup = new PopupMenu();
+		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
 
-      final SystemTray tray = SystemTray.getSystemTray();
+		final SystemTray tray = SystemTray.getSystemTray();
 
-      // Add components to popup menu
-      popup.add("Status anzeigen");
-      popup.add("Hilfe öffnen (SWE Gadget " + VersionInfo.getVersion() + ")");
-      popup.add("Konfiguration");
-      popup.addSeparator();
-      popup.add("Beenden");
+		// Add components to popup menu
+		popup.add("Status anzeigen");
+		//popup.add("Hilfe öffnen (Pomodoro " + VersionInfo.getVersion() + ")");
+		popup.add("Konfiguration");
+		popup.addSeparator();
+		popup.add("Beenden");
 
-      popup.addActionListener(actionListener);
+		popup.addActionListener(actionListener);
 
-      trayIcon.setPopupMenu(popup);
+		trayIcon.setPopupMenu(popup);
 
-      try {
-         tray.add(trayIcon);
-      } catch (AWTException e) {
-         System.out.println("TrayIcon could not be added.");
-         return;
-      }
+		try {
+			tray.add(trayIcon);
+		} catch (AWTException e) {
+			System.out.println("TrayIcon could not be added.");
+			return;
+		}
 
-      trayIcon.addMouseListener(mouseListener);
-   }
+		trayIcon.addMouseListener(mouseListener);
+	}
 
-   public void setIcon(boolean isOk) {
-      if (isOk) {
-         trayIcon.setImage(IconFactory.createOkIconBig().getImage());
-      } else {
-         trayIcon.setImage(IconFactory.createNokIconBig().getImage());
-      }
-   }
+	public void setIcon(boolean isOk) {
+		trayIcon.setImage(IconFactory.createAppIconBig().getImage());
+	}
 
-   public void showMessage(String title, String text, MessageType type) {
-      trayIcon.displayMessage(title, text, type);
-   }
+	public void showMessage(String title, String text, MessageType type) {
+		trayIcon.displayMessage(title, text, type);
+	}
 
 }

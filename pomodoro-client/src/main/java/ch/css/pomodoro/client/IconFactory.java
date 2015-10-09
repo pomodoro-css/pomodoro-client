@@ -27,35 +27,11 @@ public class IconFactory {
    }
 
    public static ImageIcon createAppIconBig() {
-      return createImage(ICON_APP, "Ok", SIZE_BIG);
+      return createImage(ICON_APP, "PomodoroTimer", SIZE_BIG);
    }
 
-   public static ImageIcon createAIconSmall() {
-      return createImage(ICON_OK, "Ok", SIZE_SMALL);
-   }
-
-   public static ImageIcon createNokIconBig() {
-      return createImage(ICON_NOK, "Nicht ok", SIZE_BIG);
-   }
-
-   public static ImageIcon createNokIconSmall() {
-      return createImage(ICON_NOK, "Nicht ok", SIZE_SMALL);
-   }
-
-   public static ImageIcon createServiceErrorBig() {
-      return createImage(ICON_SERVICE_ERROR, "Status kann momentan nicht abgefragt werden", SIZE_BIG);
-   }
-
-   public static ImageIcon createServiceErrorSmall() {
-      return createImage(ICON_SERVICE_ERROR, "Status kann momentan nicht abgefragt werden", SIZE_SMALL);
-   }
-
-   public static ImageIcon createNoInfoIconBig() {
-      return createImage(ICON_NOINFO, "Keine Informationen", SIZE_BIG);
-   }
-
-   public static ImageIcon createNoInfoIconSmall() {
-      return createImage(ICON_NOINFO, "Keine Informationen", SIZE_SMALL);
+   public static ImageIcon createAppIconSmall() {
+      return createImage(ICON_APP, "PomodoroTimer", SIZE_SMALL);
    }
 
    private static ImageIcon createImage(final String path, final String description, int size) {
