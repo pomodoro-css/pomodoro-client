@@ -15,7 +15,6 @@ public class RegistrationService {
 	public boolean callRegistrationService(String pNummer, String name, String group) {
 		// handle 404 Error
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
-		logger.info(String.format("BasisURL for Registration Service: %s", basisURL));
 		StringBuilder callUrl = new StringBuilder(basisURL);
 		callUrl.append("?nr="+pNummer);
 		callUrl.append("&name="+name);
@@ -30,6 +29,8 @@ public class RegistrationService {
 
 		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON_TYPE)
 				.post(ClientResponse.class);
+		
+		// TODO response
 
 		return true;
 
