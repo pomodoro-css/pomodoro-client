@@ -29,8 +29,12 @@ public class RegistrationUI {
 	}
 
 	private void createRegistrationUI() {
-		JFrame frame = new JFrame("Demo application");
+		JFrame frame = new JFrame("Registration");
+		// Center on Screen
+		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setSize(300, 150);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
@@ -47,7 +51,7 @@ public class RegistrationUI {
 		userPnrLabel.setBounds(10, 10, 80, 25);
 		panel.add(userPnrLabel);
 
-		JTextField userPnrText = new JTextField(6);
+		JTextField userPnrText = new JTextField();
 		userPnrText.setBounds(100, 10, 160, 25);
 		panel.add(userPnrText);
 
@@ -55,7 +59,7 @@ public class RegistrationUI {
 		userNameLabel.setBounds(10, 40, 80, 25);
 		panel.add(userNameLabel);
 
-		JTextField userNameTextField = new JTextField(50);
+		JTextField userNameTextField = new JTextField();
 		userNameTextField.setBounds(100, 40, 160, 25);
 		panel.add(userNameTextField);
 
