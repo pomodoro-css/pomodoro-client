@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 public class Main {
 	private static Logger logger = LoggerFactory.getLogger(Main.class);
 
-	private final String myString = "mine";
 
 	private static final String DEFAULT_HOST = "http://lnx54064.css.ch:12345";
 
@@ -58,13 +57,20 @@ public class Main {
 	}
 
 	private void startTrayIconUI() {
-		// TODO Auto-generated method stub
-
+		
+		final PomodoroTrayIconUI ui = new PomodoroTrayIconUI();
+		
+		SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                ui.createAndShowUI();
+            }
+        });
+		
 	}
 
 	private void initUiManager() {
 		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
