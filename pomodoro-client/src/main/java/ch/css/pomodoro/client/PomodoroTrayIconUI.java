@@ -27,13 +27,19 @@ public class PomodoroTrayIconUI {
 		final SystemTray tray = SystemTray.getSystemTray();
 
 		MenuItem statusAnzeige = new MenuItem("Status anzeigen");
-		MenuItem pomodoroVersion = new MenuItem("Pomodoro Version");
+		MenuItem register = new MenuItem("Register");
+		MenuItem startTimer = new MenuItem("Start Timer");
+		MenuItem stopTimer = new MenuItem("Stop Timer");
+		MenuItem about = new MenuItem("About Pomodoro");
 		MenuItem beenden = new MenuItem("Beenden");
 
 		// Add components to popup menu
 		popup.add(statusAnzeige);
-		popup.add(pomodoroVersion);
+		popup.add(register);
+		popup.add(startTimer);
+		popup.add(stopTimer);
 		popup.addSeparator();
+		popup.add(about);
 		popup.add(beenden);
 
 		trayIcon.setPopupMenu(popup);
@@ -57,15 +63,53 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "All is well");
+				StringBuilder msg = new StringBuilder();
+				msg.append("Manuel Mueller is busy Scrum Mastering!");
+				msg.append("\n");
+				msg.append("Marco Busy is relaxing as usual!");
+				msg.append("\n");
+				msg.append("Adi Wey is busy testing.");
+				msg.append("\n");
+				msg.append("Sascha Waser is busy with AngularJs.");
+				msg.append("\n");
+				msg.append("Rahul Rao is busy with Leads!");
+				JOptionPane.showMessageDialog(null, msg.toString());
 			}
 		});
 
-		pomodoroVersion.addActionListener(new ActionListener() {
+		register.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Pomodoro Version: " + VersionInfo.getVersion());
+				JOptionPane.showMessageDialog(null, "I am registered!");
+			}
+		});
+
+		startTimer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "I am busy now!");
+			}
+		});
+
+		stopTimer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "I am free now!");
+			}
+		});
+
+		about.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StringBuilder msg = new StringBuilder();
+				msg.append("Pomodoro Version: " + VersionInfo.getVersion());
+				msg.append("\n");
+				msg.append("Contributors: Manuel Mueller, Adrian Wey, Marco Birrer, Sascha Waser, Rahul Rao");
+				JOptionPane.showMessageDialog(null, msg.toString());
 			}
 		});
 
