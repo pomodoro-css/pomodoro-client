@@ -1,6 +1,11 @@
 package ch.css.pomodoro.client;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.SystemTray;
+import java.awt.TrayIcon;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -36,6 +41,11 @@ public class Main {
 		}
 
 		logger.info(String.format("Host: %s", host));
+		
+		
+		TrayIcon appIcon = new TrayIcon(image);
+		
+		SystemTray.getSystemTray().add(trayIcon);
 
 //		Main main = new Main();
 //		main.start(host);
