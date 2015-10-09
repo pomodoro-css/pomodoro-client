@@ -19,7 +19,7 @@ public class PomodoroTrayIconUI {
 	private static Logger logger = LoggerFactory.getLogger(PomodoroTrayIconUI.class);
 
 	private TrayIcon trayIcon;
-	
+
 	public void createAndShowUI() {
 		final PopupMenu popup = new PopupMenu();
 		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
@@ -65,7 +65,7 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showConfirmDialog(null, "Pomodoro Version: " + VersionInfo.getVersion());
+				JOptionPane.showMessageDialog(null, "Pomodoro Version: " + VersionInfo.getVersion());
 			}
 		});
 
