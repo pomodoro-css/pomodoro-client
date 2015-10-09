@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 public class Main {
 	private static Logger logger = LoggerFactory.getLogger(Main.class);
+	
+	private final String myString = "mine";
 
 	private static final String DEFAULT_HOST = "http://lnx54064.css.ch:12345";
 
