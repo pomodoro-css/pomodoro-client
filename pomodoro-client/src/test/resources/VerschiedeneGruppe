@@ -8,14 +8,14 @@
             "remainingTime": 60           
         },
         {
-            "grpName": "KM",
+            "grpName": "VA CRM",
             "name": "Sascha Waser",
             "pnummer": "p15182",
             "status": 0,            
             "remainingTime": 180           
         },
         {
-            "grpName": "PSP",
+            "grpName": "VA CRM",
             "name": "Marco Birrer",
             "pnummer": "p15525",
             "status": 1,
@@ -23,14 +23,14 @@
                         
         },
         {
-            "grpName": "Bestand",
+            "grpName": "VA CRM",
             "name": "Rahul Rao",
             "pnummer": "p15097",
             "status": 0,
             "remainingTime": 0            
         },
         {
-            "grpName": "DMS",
+            "grpName": "VA CRM",
             "name": "Manuel Müller",
             "pnummer": "p13940",
             "status": 0,
