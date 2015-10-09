@@ -31,9 +31,10 @@ public class RegistrationService {
 				.post(ClientResponse.class);
 		
 		// TODO response
-
+		if (response.getStatus() != 200) {
+			return false;
+		}
 		return true;
-
 	}
 
 }
