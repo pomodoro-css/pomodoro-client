@@ -12,9 +12,19 @@ public class IconFactory {
 
    public static final String ICON_APP = "PomodoroTimer.jpeg";
 
+   private static final String ICON_OK = null;
+   
+   private static final String ICON_NOK = null;
+
+   private static final String ICON_SERVICE_ERROR = null;
+   
+   private static final String ICON_NOINFO = null;
+
    private static final int SIZE_SMALL = 11;
 
    private static final int SIZE_BIG = 16;
+
+
 
    private static Logger logger = LoggerFactory.getLogger(IconFactory.class);
 
