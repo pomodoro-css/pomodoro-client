@@ -24,7 +24,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws Exception {
-		logger.info("Starting SWE Gadget...");
+		logger.info("Starting Pomodoro Client...");
 
 		String host = "";
 		if (args.length == 1) {
