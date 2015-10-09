@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,7 +82,13 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "I am registered!");
+				final RegistrationUI ui = new RegistrationUI();
+
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						ui.registerClient();
+					}
+				});
 			}
 		});
 
