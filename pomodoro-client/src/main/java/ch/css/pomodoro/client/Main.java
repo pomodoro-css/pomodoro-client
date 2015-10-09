@@ -1,11 +1,6 @@
 package ch.css.pomodoro.client;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -15,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 public class Main {
 	private static Logger logger = LoggerFactory.getLogger(Main.class);
-
 
 	private static final String DEFAULT_HOST = "http://lnx54064.css.ch:12345";
 
@@ -57,15 +51,15 @@ public class Main {
 	}
 
 	private void startTrayIconUI() {
-		
+
 		final PomodoroTrayIconUI ui = new PomodoroTrayIconUI();
-		
+
 		SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                ui.createAndShowUI();
-            }
-        });
-		
+			public void run() {
+				ui.createAndShowUI();
+			}
+		});
+
 	}
 
 	private void initUiManager() {
