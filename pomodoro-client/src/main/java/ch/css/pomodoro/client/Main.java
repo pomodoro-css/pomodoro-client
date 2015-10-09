@@ -40,8 +40,9 @@ public class Main {
 		// TrayIcon appIcon = new TrayIcon(image);
 
 		// SystemTray.getSystemTray().add(trayIcon);
-		
+
 		PomodoreSystemUtils.setHost(host);
+		PomodoreSystemUtils.setBeginPath("/users/");
 
 		Main main = new Main();
 		main.start();
@@ -50,9 +51,8 @@ public class Main {
 	private void start() {
 		initUiManager();
 		startTrayIconUI();
-		
-	}
 
+	}
 
 	private void startTrayIconUI() {
 
