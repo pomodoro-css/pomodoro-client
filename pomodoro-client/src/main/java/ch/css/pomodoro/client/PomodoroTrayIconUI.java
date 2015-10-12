@@ -5,7 +5,6 @@ import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
-import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,16 +22,17 @@ public class PomodoroTrayIconUI {
 
 	public void createAndShowUI() {
 		final PopupMenu popup = new PopupMenu();
-		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
-
 		final SystemTray tray = SystemTray.getSystemTray();
 
-		MenuItem statusAnzeige = new MenuItem("Status anzeigen");
-		MenuItem register = new MenuItem("Register");
-		MenuItem startTimer = new MenuItem("Start Timer");
-		MenuItem stopTimer = new MenuItem("Stop Timer");
-		MenuItem about = new MenuItem("About Pomodoro");
-		MenuItem beenden = new MenuItem("Beenden");
+		MenuItem statusAnzeige = createStatusAnzeigeMenuItem();
+		MenuItem register = createRegistrationMenuItem();
+		MenuItem startTimer = createStartTimerMenuItem();
+		MenuItem stopTimer = createStopTimerMenuItem();
+		MenuItem about = createAboutMenuItem();
+		MenuItem beenden = createBeendenMenuItem(tray);
+
+		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
+		registerActionListenerOnTrayIcon();
 
 		// Add components to popup menu
 		popup.add(statusAnzeige);
@@ -42,7 +42,6 @@ public class PomodoroTrayIconUI {
 		popup.addSeparator();
 		popup.add(about);
 		popup.add(beenden);
-
 		trayIcon.setPopupMenu(popup);
 
 		try {
@@ -52,6 +51,9 @@ public class PomodoroTrayIconUI {
 			return;
 		}
 
+	}
+
+	private void registerActionListenerOnTrayIcon() {
 		trayIcon.addActionListener(new ActionListener() {
 
 			@Override
@@ -59,25 +61,64 @@ public class PomodoroTrayIconUI {
 				JOptionPane.showMessageDialog(null, "This dialog box is run from System Tray");
 			}
 		});
+	}
 
-		statusAnzeige.addActionListener(new ActionListener() {
+	private MenuItem createBeendenMenuItem(final SystemTray tray) {
+		MenuItem beenden = new MenuItem("Beenden");
+		beenden.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tray.remove(trayIcon);
+				logger.info("Closing down Pomodoro Timer");
+				System.exit(0);
+			}
+		});
+		return beenden;
+	}
+
+	private MenuItem createAboutMenuItem() {
+		MenuItem about = new MenuItem("About Pomodoro");
+		about.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				StringBuilder msg = new StringBuilder();
-				msg.append("Manuel Mueller is busy Scrum Mastering!");
+				msg.append("Pomodoro Version: " + VersionInfo.getVersion());
 				msg.append("\n");
-				msg.append("Marco Busy is relaxing as usual!");
-				msg.append("\n");
-				msg.append("Adi Wey is busy testing.");
-				msg.append("\n");
-				msg.append("Sascha Waser is busy with AngularJs.");
-				msg.append("\n");
-				msg.append("Rahul Rao is busy with Leads!");
+				msg.append("Contributors: Manuel Mueller, Adrian Wey, Marco Birrer, Sascha Waser, Rahul Rao");
 				JOptionPane.showMessageDialog(null, msg.toString());
 			}
 		});
+		return about;
+	}
 
+	private MenuItem createStopTimerMenuItem() {
+		MenuItem stopTimer = new MenuItem("Stop Timer");
+		stopTimer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "I am free now!");
+			}
+		});
+		return stopTimer;
+	}
+
+	private MenuItem createStartTimerMenuItem() {
+		MenuItem startTimer = new MenuItem("Start Timer");
+		startTimer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "I am busy now!");
+			}
+		});
+		return startTimer;
+	}
+
+	private MenuItem createRegistrationMenuItem() {
+		MenuItem register = new MenuItem("Register");
 		register.addActionListener(new ActionListener() {
 
 			@Override
@@ -91,52 +132,28 @@ public class PomodoroTrayIconUI {
 				});
 			}
 		});
+		return register;
+	}
 
-		startTimer.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "I am busy now!");
-			}
-		});
-
-		stopTimer.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "I am free now!");
-			}
-		});
-
-		about.addActionListener(new ActionListener() {
-
+	private MenuItem createStatusAnzeigeMenuItem() {
+		MenuItem statusAnzeige = new MenuItem("Status anzeigen");
+		statusAnzeige.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				StringBuilder msg = new StringBuilder();
-				msg.append("Pomodoro Version: " + VersionInfo.getVersion());
+				msg.append("Manuel Mueller is busy Scrum Mastering!");
 				msg.append("\n");
-				msg.append("Contributors: Manuel Mueller, Adrian Wey, Marco Birrer, Sascha Waser, Rahul Rao");
+				msg.append("Marco Birrer is relaxing as usual!");
+				msg.append("\n");
+				msg.append("Adi Wey is busy testing.");
+				msg.append("\n");
+				msg.append("Sascha Waser is busy with AngularJs.");
+				msg.append("\n");
+				msg.append("Rahul Rao is busy with Leads!");
 				JOptionPane.showMessageDialog(null, msg.toString());
 			}
 		});
-
-		beenden.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				tray.remove(trayIcon);
-				logger.info("Closing down Pomodoro Timer");
-				System.exit(0);
-			}
-		});
-	}
-
-	public void setIcon(boolean isOk) {
-		trayIcon.setImage(IconFactory.createAppIconBig().getImage());
-	}
-
-	public void showMessage(String title, String text, MessageType type) {
-		trayIcon.displayMessage(title, text, type);
+		return statusAnzeige;
 	}
 
 }

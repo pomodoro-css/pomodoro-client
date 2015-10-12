@@ -12,7 +12,6 @@ public class Main {
 	private static Logger logger = LoggerFactory.getLogger(Main.class);
 
 	private static final String DEFAULT_HOST = "http://localhost:8080";
-	//private static final String DEFAULT_HOST = "http://lnx54064.css.ch:12345";
 
 	{
 		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
