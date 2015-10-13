@@ -40,10 +40,6 @@ public class Main {
 
 		checkSystemTrayAvailability();
 
-		// TrayIcon appIcon = new TrayIcon(image);
-
-		// SystemTray.getSystemTray().add(trayIcon);
-
 		PomodoreSystemUtils.setHost(host);
 		PomodoreSystemUtils.setBeginPath("/users/");
 
