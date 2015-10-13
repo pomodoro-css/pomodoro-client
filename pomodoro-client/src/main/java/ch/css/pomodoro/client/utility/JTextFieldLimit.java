@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client;
+package ch.css.pomodoro.client.utility;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -10,12 +10,7 @@ public class JTextFieldLimit extends PlainDocument {
 
 	private int limit;
 
-	JTextFieldLimit(int limit) {
-		super();
-		this.limit = limit;
-	}
-
-	JTextFieldLimit(int limit, boolean upper) {
+	public JTextFieldLimit(int limit) {
 		super();
 		this.limit = limit;
 	}

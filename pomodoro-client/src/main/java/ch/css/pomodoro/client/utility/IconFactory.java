@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client;
+package ch.css.pomodoro.client.utility;
 
 import java.awt.Image;
 import java.net.URL;

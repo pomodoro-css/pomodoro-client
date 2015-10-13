@@ -1,9 +1,11 @@
-package ch.css.pomodoro.client;
+package ch.css.pomodoro.client.service;
 
 import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;

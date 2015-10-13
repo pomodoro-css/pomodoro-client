@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client;
+package ch.css.pomodoro.client.utility;
 
 public class PomodoreSystemUtils {
 

@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client;
+package ch.css.pomodoro.client.ui;
 
 import java.awt.AWTException;
 import java.awt.MenuItem;
@@ -13,6 +13,9 @@ import javax.swing.SwingUtilities;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ch.css.pomodoro.client.utility.IconFactory;
+import ch.css.pomodoro.client.utility.VersionInfo;
 
 public class PomodoroTrayIconUI {
 

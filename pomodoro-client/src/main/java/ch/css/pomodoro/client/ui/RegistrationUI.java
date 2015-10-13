@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client;
+package ch.css.pomodoro.client.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +12,10 @@ import javax.swing.JTextField;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ch.css.pomodoro.client.service.RegistrationService;
+import ch.css.pomodoro.client.utility.IconFactory;
+import ch.css.pomodoro.client.utility.JTextFieldLimit;
 
 public class RegistrationUI {
 
