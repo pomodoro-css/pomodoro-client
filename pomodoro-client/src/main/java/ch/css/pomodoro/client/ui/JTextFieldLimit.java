@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client.utility;
+package ch.css.pomodoro.client.ui;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

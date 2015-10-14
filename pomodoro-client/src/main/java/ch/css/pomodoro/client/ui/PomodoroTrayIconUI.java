@@ -34,9 +34,6 @@ public class PomodoroTrayIconUI {
 		MenuItem about = createAboutMenuItem();
 		MenuItem beenden = createBeendenMenuItem(tray);
 
-		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
-		registerActionListenerOnTrayIcon();
-
 		// Add components to popup menu
 		popup.add(statusAnzeige);
 		popup.add(register);
@@ -45,6 +42,8 @@ public class PomodoroTrayIconUI {
 		popup.addSeparator();
 		popup.add(about);
 		popup.add(beenden);
+
+		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
 		trayIcon.setPopupMenu(popup);
 
 		try {
@@ -54,16 +53,6 @@ public class PomodoroTrayIconUI {
 			return;
 		}
 
-	}
-
-	private void registerActionListenerOnTrayIcon() {
-		trayIcon.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "This dialog box is run from System Tray");
-			}
-		});
 	}
 
 	private MenuItem createBeendenMenuItem(final SystemTray tray) {
@@ -130,7 +119,7 @@ public class PomodoroTrayIconUI {
 
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						ui.registerClient();
+						ui.showRegistrationUI();
 					}
 				});
 			}
@@ -144,15 +133,15 @@ public class PomodoroTrayIconUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				StringBuilder msg = new StringBuilder();
-				msg.append("Manuel Mueller is busy Scrum Mastering!");
+				msg.append("Manuel Mueller is busy mastering scrum!");
 				msg.append("\n");
-				msg.append("Marco Birrer is relaxing as usual!");
+				msg.append("Marco Birrer is busy relaxing as usual!");
 				msg.append("\n");
-				msg.append("Adi Wey is busy testing.");
+				msg.append("Adi Wey is busy creating strange tests!");
 				msg.append("\n");
-				msg.append("Sascha Waser is busy with AngularJs.");
+				msg.append("Sascha Waser is busy building a house!");
 				msg.append("\n");
-				msg.append("Rahul Rao is busy with Leads!");
+				msg.append("Rahul Rao is busy deleting code!");
 				JOptionPane.showMessageDialog(null, msg.toString());
 			}
 		});

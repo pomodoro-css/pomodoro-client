@@ -29,31 +29,32 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		logger.info("Starting Pomodoro Client...");
 
+		String host = determineHost(args);
+
+		checkSystemTrayAvailability();
+		setupServicePrequisites(host);
+		initUiManager();
+
+		startTrayIconApp();
+	}
+
+	private static String determineHost(String[] args) {
 		String host = "";
 		if (args.length == 1) {
 			host = args[0];
 		} else {
 			host = DEFAULT_HOST;
 		}
-
 		logger.info(String.format("Host: %s", host));
+		return host;
+	}
 
-		checkSystemTrayAvailability();
-
+	private static void setupServicePrequisites(String host) {
 		PomodoreSystemUtils.setHost(host);
 		PomodoreSystemUtils.setBeginPath("/users/");
-
-		Main main = new Main();
-		main.start();
 	}
 
-	private void start() {
-		initUiManager();
-		startTrayIconUI();
-
-	}
-
-	private void startTrayIconUI() {
+	private static void startTrayIconApp() {
 
 		final PomodoroTrayIconUI ui = new PomodoroTrayIconUI();
 
@@ -65,7 +66,7 @@ public class Main {
 
 	}
 
-	private void initUiManager() {
+	private static void initUiManager() {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception ex) {
