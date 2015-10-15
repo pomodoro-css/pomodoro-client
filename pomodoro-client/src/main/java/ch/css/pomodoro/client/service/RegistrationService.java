@@ -5,12 +5,12 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
-import ch.css.pomodoro.client.utility.UserInfo;
-
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+
+import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
+import ch.css.pomodoro.client.utility.UserInfo;
 
 public class RegistrationService {
 	private static Logger logger = LoggerFactory.getLogger(RegistrationService.class);

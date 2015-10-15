@@ -1,7 +1,7 @@
 package ch.css.pomodoro.client.ui.allstatus;
 
+import java.awt.GridBagLayout;
 import java.util.List;
-import java.util.Set;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -30,7 +30,7 @@ public class UsersStatusUI extends JFrame {
 	public void showAllUserStatusUI() {
 		this.setTitle("Status");
 		this.setResizable(false);
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new GridBagLayout());
 		panel.setLayout(null);
 
 		StatusRegisteredUsersService service = new StatusRegisteredUsersService();
@@ -61,11 +61,44 @@ public class UsersStatusUI extends JFrame {
 		userTable.setModel(dtm);
 		for (RegisteredUser user : groupedUsers.get(testKeyLocal)){
 			dtm.addRow(user.getUserRow());
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
+			dtm.addRow(new Object[] {"123", "456", "798", "123"});
 		}
 		
-		
-		
-		panel.add(new JScrollPane(userTable));
+		 JScrollPane scrollPane = new JScrollPane(userTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		 userTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		 
+	
+		panel.add(userTable);
 		
 		
 		
