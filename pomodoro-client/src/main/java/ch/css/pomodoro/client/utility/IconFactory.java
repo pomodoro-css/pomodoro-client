@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class IconFactory {
 
-   public static final String ICON_APP = "PomodoroTimer.jpeg";
+   public static final String ICON_APP = "tomato_red.svg";
 
    private static final String ICON_OK = null;
    
