@@ -10,21 +10,17 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
-import ch.css.pomodoro.client.utility.UserInfo;
 
-public class RegistrationService {
-	private static Logger logger = LoggerFactory.getLogger(RegistrationService.class);
+public class StartTimerService {
+	private static Logger logger = LoggerFactory.getLogger(StartTimerService.class);
 
-	public boolean callRegistrationService() {
+	public boolean callStartTimerService(String pNummer) {
+		// handle 404 Error
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
 		StringBuilder callUrl = new StringBuilder(basisURL);
-		callUrl.append("?nr="+UserInfo.getPNummer());
-		callUrl.append("&name="+UserInfo.getName());
-		if (UserInfo.getGroupName() != null) {
-			callUrl.append("&group="+UserInfo.getGroupName());
-		}
+		callUrl.append("?nr="+pNummer);
 		
-		logger.info(String.format("URL for Registration Service: %s", callUrl.toString()));
+		logger.info(String.format("URL for StartTimer Service: %s", callUrl.toString()));
 
 		Client client = Client.create();
 		WebResource webResource = client.resource(callUrl.toString());

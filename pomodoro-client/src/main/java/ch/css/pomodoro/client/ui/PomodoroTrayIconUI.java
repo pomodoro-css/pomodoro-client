@@ -5,7 +5,6 @@ import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
-import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.css.pomodoro.client.ui.registration.RegistrationUI;
+import ch.css.pomodoro.client.ui.start.StartTimerHandler;
 import ch.css.pomodoro.client.utility.IconFactory;
 import ch.css.pomodoro.client.utility.VersionInfo;
 
@@ -105,8 +105,13 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				trayIcon.displayMessage("Start", "Starting timer with 25 Minutes", MessageType.INFO);
-				// JOptionPane.showMessageDialog(null, "I am busy now!");
+				final StartTimerHandler startTimer = new StartTimerHandler(trayIcon);
+				
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						startTimer.startTimer();;
+					}
+				});
 			}
 		});
 		return startTimer;

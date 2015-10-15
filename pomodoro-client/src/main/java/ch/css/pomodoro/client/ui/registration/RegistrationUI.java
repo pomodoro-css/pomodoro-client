@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.css.pomodoro.client.utility.IconFactory;
+import ch.css.pomodoro.client.utility.UserInfo;
 
 public class RegistrationUI extends JFrame {
 
@@ -109,8 +110,9 @@ public class RegistrationUI extends JFrame {
 				JOptionPane.showMessageDialog(null, "Please fill out all required (*) fields.");
 			} else {
 				dispose();
-				RegistrationHandler regHandler = new RegistrationHandler(userPnrText.getText(),
+				UserInfo.getInstance(userPnrText.getText(),
 						userNameText.getText(), gruppeNameText.getText());
+				RegistrationHandler regHandler = new RegistrationHandler();
 				regHandler.registerClient();
 			}
 		}
