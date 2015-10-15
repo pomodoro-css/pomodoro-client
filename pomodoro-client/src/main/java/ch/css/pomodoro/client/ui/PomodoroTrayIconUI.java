@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.css.pomodoro.client.ui.registration.RegistrationUI;
 import ch.css.pomodoro.client.ui.start.StartTimerHandler;
+import ch.css.pomodoro.client.ui.stop.StopTimerHandler;
 import ch.css.pomodoro.client.utility.IconFactory;
 import ch.css.pomodoro.client.utility.VersionInfo;
 
@@ -93,7 +94,13 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "I am free now!");
+				final StopTimerHandler stopHandler = new StopTimerHandler(trayIcon);
+
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						stopHandler.stopTimer();
+					}
+				});
 			}
 		});
 		return stopTimer;
@@ -106,10 +113,11 @@ public class PomodoroTrayIconUI {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				final StartTimerHandler startTimer = new StartTimerHandler(trayIcon);
-				
+
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						startTimer.startTimer();;
+						startTimer.startTimer();
+						;
 					}
 				});
 			}
