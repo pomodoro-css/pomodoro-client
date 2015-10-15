@@ -18,6 +18,7 @@ import ch.css.pomodoro.client.ui.registration.RegistrationUI;
 import ch.css.pomodoro.client.ui.start.StartTimerHandler;
 import ch.css.pomodoro.client.ui.stop.StopTimerHandler;
 import ch.css.pomodoro.client.utility.IconFactory;
+import ch.css.pomodoro.client.utility.UserInfo;
 import ch.css.pomodoro.client.utility.VersionInfo;
 
 public class PomodoroTrayIconUI {
@@ -25,6 +26,8 @@ public class PomodoroTrayIconUI {
 	private static Logger logger = LoggerFactory.getLogger(PomodoroTrayIconUI.class);
 
 	private TrayIcon trayIcon;
+	private MenuItem startTimer;
+	private MenuItem stopTimer;
 
 	public void createAndShowUI() {
 		final PopupMenu popup = new PopupMenu();
@@ -32,8 +35,8 @@ public class PomodoroTrayIconUI {
 
 		MenuItem statusAnzeige = createStatusAnzeigeMenuItem();
 		MenuItem register = createRegistrationMenuItem();
-		MenuItem startTimer = createStartTimerMenuItem();
-		MenuItem stopTimer = createStopTimerMenuItem();
+		startTimer = createStartTimerMenuItem();
+		stopTimer = createStopTimerMenuItem();
 		MenuItem about = createAboutMenuItem();
 		MenuItem beenden = createBeendenMenuItem(tray);
 
@@ -89,39 +92,52 @@ public class PomodoroTrayIconUI {
 	}
 
 	private MenuItem createStopTimerMenuItem() {
-		MenuItem stopTimer = new MenuItem("Stop Timer");
+		stopTimer = new MenuItem("Stop Timer");
 		stopTimer.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				final StopTimerHandler stopHandler = new StopTimerHandler(trayIcon);
 
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						stopHandler.stopTimer();
-					}
-				});
+				if (!UserInfo.exist()) {
+					JOptionPane.showMessageDialog(null, "Please register first");
+
+				} else {
+					final StopTimerHandler stopHandler = new StopTimerHandler(trayIcon);
+
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							stopHandler.stopTimer();
+						}
+					});
+				}
 			}
 		});
+
 		return stopTimer;
 	}
 
 	private MenuItem createStartTimerMenuItem() {
-		MenuItem startTimer = new MenuItem("Start Timer");
+		startTimer = new MenuItem("Start Timer");
 		startTimer.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				final StartTimerHandler startTimer = new StartTimerHandler(trayIcon);
 
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						startTimer.startTimer();
+				if (!UserInfo.exist()) {
+					JOptionPane.showMessageDialog(null, "Please register first");
+				} else {
+					final StartTimerHandler startTimer = new StartTimerHandler(trayIcon);
 
-					}
-				});
+					SwingUtilities.invokeLater(new Runnable() {
+						public void run() {
+							startTimer.startTimer();
+						}
+					});
+				}
+
 			}
 		});
+
 		return startTimer;
 	}
 
@@ -140,6 +156,7 @@ public class PomodoroTrayIconUI {
 				});
 			}
 		});
+
 		return register;
 	}
 
