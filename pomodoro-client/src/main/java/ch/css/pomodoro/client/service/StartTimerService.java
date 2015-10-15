@@ -19,7 +19,7 @@ public class StartTimerService {
 		// handle 404 Error
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
 		StringBuilder callUrl = new StringBuilder(basisURL);
-		callUrl.append("/"+UserInfo.getPNummer());
+		callUrl.append(UserInfo.getPNummer());
 		callUrl.append("/start");
 		
 		logger.info(String.format("URL for StartTimer Service: %s", callUrl.toString()));
