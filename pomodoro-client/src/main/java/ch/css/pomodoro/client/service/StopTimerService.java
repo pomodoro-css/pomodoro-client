@@ -1,25 +1,28 @@
 package ch.css.pomodoro.client.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
+import ch.css.pomodoro.client.utility.UserInfo;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-
-import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
-import ch.css.pomodoro.client.utility.UserInfo;
 
 public class StopTimerService {
 
 	private static Logger logger = LoggerFactory.getLogger(StopTimerService.class);
 
-	public boolean callStopTimerService() {
+	public boolean callStopTimerService() throws UnsupportedEncodingException {
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
 		StringBuilder callUrl = new StringBuilder(basisURL);
-		callUrl.append(UserInfo.getPNummer());
+		callUrl.append(URLEncoder.encode(UserInfo.getPNummer(), "UTF-8"));
 		callUrl.append("/stop");
 
 		logger.info(String.format("URL for StopTimer Service: %s", callUrl.toString()));
