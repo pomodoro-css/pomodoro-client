@@ -51,7 +51,7 @@ public class PomodoroTrayIconUI {
 		popup.add(about);
 		popup.add(beenden);
 
-		trayIcon = new TrayIcon(IconFactory.createAppIconBig().getImage());
+		trayIcon = new TrayIcon(IconFactory.createAppIconTray().getImage());
 		trayIcon.setPopupMenu(popup);
 
 		try {

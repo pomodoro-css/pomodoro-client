@@ -28,7 +28,10 @@ public class IconFactory {
 
 	private static final int SIZE_SMALL = 11;
 
-	private static final int SIZE_BIG = 16;
+	private static final int SIZE_TRAY = 16;
+	
+	private static final int SIZE_BIG = 24;
+	
 
 	private static Logger logger = LoggerFactory.getLogger(IconFactory.class);
 
@@ -40,6 +43,10 @@ public class IconFactory {
 		return createImage(file, "", SIZE_SMALL);
 	}
 
+	public static ImageIcon getIconTray(String file) {
+		return createImage(file, "", SIZE_TRAY);
+	}
+
 	public static ImageIcon getStateIcon(String state) {
 		return createImage(determineStateIconFile(state), "", SIZE_BIG);
 	}
@@ -49,6 +56,10 @@ public class IconFactory {
 			return ICON_BUSY;
 		}
 		return ICON_ONLINE;
+	}
+
+	public static ImageIcon createAppIconTray() {
+		return createImage(ICON_APP, "PomodoroTimer", SIZE_TRAY);
 	}
 
 	public static ImageIcon createAppIconBig() {

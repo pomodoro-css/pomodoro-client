@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.css.pomodoro.client.service.RegisteredUser;
 import ch.css.pomodoro.client.service.StatusRegisteredUsersService;
+import ch.css.pomodoro.client.utility.IconFactory;
 
 public class UsersStatusUI extends JFrame {
 
@@ -37,6 +38,7 @@ public class UsersStatusUI extends JFrame {
 		this.setSize(400, 400);
 		this.setLocationRelativeTo(null);
 		this.setLayout(new FlowLayout());
+		this.setIconImage(IconFactory.createAppIconBig().getImage());
 
 		prepareUsersByGroup();
 
