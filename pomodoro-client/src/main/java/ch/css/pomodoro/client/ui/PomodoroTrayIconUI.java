@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.css.pomodoro.client.ui.allstatus.UsersStatusUI;
 import ch.css.pomodoro.client.ui.registration.RegistrationUI;
 import ch.css.pomodoro.client.ui.start.StartTimerHandler;
 import ch.css.pomodoro.client.ui.stop.StopTimerHandler;
@@ -165,17 +166,27 @@ public class PomodoroTrayIconUI {
 		statusAnzeige.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				StringBuilder msg = new StringBuilder();
-				msg.append("Manuel Mueller is busy mastering scrum!");
-				msg.append("\n");
-				msg.append("Marco Birrer is busy relaxing as usual!");
-				msg.append("\n");
-				msg.append("Adi Wey is busy creating strange tests!");
-				msg.append("\n");
-				msg.append("Sascha Waser is busy building a house!");
-				msg.append("\n");
-				msg.append("Rahul Rao is busy deleting code!");
-				JOptionPane.showMessageDialog(null, msg.toString());
+
+				final UsersStatusUI ui = new UsersStatusUI();
+				SwingUtilities.invokeLater(new Runnable() {
+
+					@Override
+					public void run() {
+						ui.showAllUserStatusUI();
+					}
+				});
+
+				// StringBuilder msg = new StringBuilder();
+				// msg.append("Manuel Mueller is busy mastering scrum!");
+				// msg.append("\n");
+				// msg.append("Marco Birrer is busy relaxing as usual!");
+				// msg.append("\n");
+				// msg.append("Adi Wey is busy creating strange tests!");
+				// msg.append("\n");
+				// msg.append("Sascha Waser is busy building a house!");
+				// msg.append("\n");
+				// msg.append("Rahul Rao is busy deleting code!");
+				// JOptionPane.showMessageDialog(null, msg.toString());
 			}
 		});
 		return statusAnzeige;

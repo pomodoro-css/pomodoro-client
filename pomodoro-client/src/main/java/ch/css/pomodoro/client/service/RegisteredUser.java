@@ -1,6 +1,7 @@
 package ch.css.pomodoro.client.service;
 
 public class RegisteredUser {
+
 	private String nr;
 
 	private String name;
@@ -67,5 +68,10 @@ public class RegisteredUser {
 		return tomatoTime;
 	}
 
-
+	@Override
+	public String toString() {
+		return "RegisteredUser [nr=" + nr + ", name=" + name + ", group=" + group + ", state="
+				+ state + ", remainingTime=" + remainingTime + ", tomatoTime=" + tomatoTime
+				+ ", startTime=" + startTime + "]";
+	}
 }
