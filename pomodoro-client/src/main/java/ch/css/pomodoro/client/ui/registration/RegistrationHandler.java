@@ -10,12 +10,14 @@ public class RegistrationHandler {
 
 	public void registerClient() throws UnsupportedEncodingException {
 		RegistrationService regService = new RegistrationService();
-		boolean successful = regService.callRegistrationService();
-		if (successful) {
-			JOptionPane.showMessageDialog(null, "You have been registered.");
+		int responseCode = regService.callRegistrationService();
+
+		if (responseCode == 500) {
+			JOptionPane.showMessageDialog(null, "Your P-Number should have at least 5 characters");
+		} else if (responseCode == 304) {
+			JOptionPane.showMessageDialog(null, "Your are already registered!");
 		} else {
-			JOptionPane.showMessageDialog(null,
-					"Sorry, we couldn't register you. Please try again later.");
+			JOptionPane.showMessageDialog(null, "Your registration was successfull.");
 		}
 	}
 
