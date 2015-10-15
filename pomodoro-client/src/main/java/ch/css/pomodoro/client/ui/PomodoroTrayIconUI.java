@@ -117,7 +117,7 @@ public class PomodoroTrayIconUI {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
 						startTimer.startTimer();
-						;
+
 					}
 				});
 			}
