@@ -10,15 +10,16 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
+import ch.css.pomodoro.client.utility.UserInfo;
 
 public class StartTimerService {
 	private static Logger logger = LoggerFactory.getLogger(StartTimerService.class);
 
-	public boolean callStartTimerService(String pNummer) {
+	public boolean callStartTimerService() {
 		// handle 404 Error
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
 		StringBuilder callUrl = new StringBuilder(basisURL);
-		callUrl.append("?nr="+pNummer);
+		callUrl.append("?nr="+UserInfo.getName());
 		
 		logger.info(String.format("URL for StartTimer Service: %s", callUrl.toString()));
 
@@ -28,7 +29,6 @@ public class StartTimerService {
 		ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON_TYPE)
 				.post(ClientResponse.class);
 		
-		// TODO response
 		if (response.getStatus() != 200) {
 			return false;
 		}

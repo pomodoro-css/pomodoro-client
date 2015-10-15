@@ -110,8 +110,9 @@ public class RegistrationUI extends JFrame {
 				JOptionPane.showMessageDialog(null, "Please fill out all required (*) fields.");
 			} else {
 				dispose();
-				UserInfo.getInstance(userPnrText.getText(),
-						userNameText.getText(), gruppeNameText.getText());
+				UserInfo.setPNummer(userPnrText.getText());
+				UserInfo.setName(userNameText.getText());
+				UserInfo.setGroupName(gruppeNameText.getText());
 				RegistrationHandler regHandler = new RegistrationHandler();
 				regHandler.registerClient();
 			}

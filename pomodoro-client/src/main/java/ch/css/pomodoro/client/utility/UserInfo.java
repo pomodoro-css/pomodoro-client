@@ -1,25 +1,20 @@
 package ch.css.pomodoro.client.utility;
 
 public class UserInfo {
-	private static UserInfo instance = null;
-	
 	private static String pNr;
 	private static String name;
 	private static String gruppe;
 	
-	protected UserInfo(String pNr, String name, String gruppe) {
+	public UserInfo(String pNr, String name, String gruppe) {
 		setPNummer(pNr);
 		setName(name);
 		setGroupName(gruppe);
 	}
 	
-	public static UserInfo getInstance(String pNr, String name, String gruppe) {
-		if (instance == null){
-			instance = new UserInfo(pNr, name, gruppe);
-		}
-		return instance;
+	public static boolean exist() {
+		return pNr != null && name != null;
 	}
-
+	
 	public static String getPNummer() {
 		return pNr;
 	}

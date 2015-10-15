@@ -4,7 +4,6 @@ import java.awt.TrayIcon;
 import java.awt.TrayIcon.MessageType;
 
 import ch.css.pomodoro.client.service.StartTimerService;
-import ch.css.pomodoro.client.utility.UserInfo;
 
 public class StartTimerHandler {
 
@@ -16,7 +15,7 @@ public class StartTimerHandler {
 
 	public void startTimer() {
 		StartTimerService startTimerService = new StartTimerService();
-		boolean successful = startTimerService.callStartTimerService(UserInfo.getName());
+		boolean successful = startTimerService.callStartTimerService();
 		if (successful) {
 			trayIcon.displayMessage("Start", "Starting timer with 25 Minutes.", MessageType.INFO);
 		} else {
