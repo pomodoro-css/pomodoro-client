@@ -68,6 +68,10 @@ public class RegisteredUser {
 		return tomatoTime;
 	}
 
+	public Object[] getUserRow() {
+		return new Object[] { getState(), getName(), getNr(), getRemainingTime() };
+	}
+
 	@Override
 	public String toString() {
 		return "RegisteredUser [nr=" + nr + ", name=" + name + ", group=" + group + ", state="
