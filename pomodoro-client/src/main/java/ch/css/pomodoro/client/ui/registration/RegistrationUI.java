@@ -3,6 +3,7 @@ package ch.css.pomodoro.client.ui.registration;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,11 +85,6 @@ public class RegistrationUI extends JFrame {
 		gruppeNameText.setBounds(110, 70, 160, 25);
 		panel.add(gruppeNameText);
 
-		// registerButton = new JButton("Register");
-		// registerButton.setBounds(185, 110, 80, 25);
-		// registerButton.addActionListener(new RegistrationActionListener());
-		// panel.add(registerButton);
-
 		registerButton = new JButton("Register");
 		registerButton.setBounds(10, 110, 100, 25);
 		registerButton.addActionListener(new RegistrationActionListener());
@@ -106,7 +103,8 @@ public class RegistrationUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (userPnrText.getText().isEmpty() || userNameText.getText().isEmpty()) {
+			if (StringUtils.isBlank(userPnrText.getText())
+					|| StringUtils.isBlank(userNameText.getText())) {
 				JOptionPane.showMessageDialog(null, "Please fill out all required (*) fields.");
 			} else {
 				dispose();
@@ -114,7 +112,14 @@ public class RegistrationUI extends JFrame {
 				UserInfo.setName(userNameText.getText());
 				UserInfo.setGroupName(gruppeNameText.getText());
 				RegistrationHandler regHandler = new RegistrationHandler();
-				regHandler.registerClient();
+
+				try {
+					regHandler.registerClient();
+				} catch (UnsupportedEncodingException e1) {
+					JOptionPane.showMessageDialog(null,
+							"Please don't use unkown symbols/characters.");
+				}
+
 			}
 		}
 	}
