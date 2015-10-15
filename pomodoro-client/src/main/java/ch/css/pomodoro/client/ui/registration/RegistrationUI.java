@@ -76,8 +76,11 @@ public class RegistrationUI extends JFrame {
 		userNameText.setBounds(110, 40, 160, 25);
 		panel.add(userNameText);
 
-		JLabel gruppeNameLabel = new JLabel("Gruppe:");
+		JLabel gruppeNameLabel = new JLabel("Gruppe *:");
 		gruppeNameLabel.setBounds(10, 70, 90, 25);
+		Font gruppeFont = new Font(gruppeNameLabel.getFont().getName(), Font.BOLD, gruppeNameLabel
+				.getFont().getSize());
+		gruppeNameLabel.setFont(gruppeFont);
 		panel.add(gruppeNameLabel);
 
 		gruppeNameText = new JTextField();
@@ -104,13 +107,14 @@ public class RegistrationUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (StringUtils.isBlank(userPnrText.getText())
-					|| StringUtils.isBlank(userNameText.getText())) {
+					|| StringUtils.isBlank(userNameText.getText())
+					|| StringUtils.isBlank(gruppeNameText.getText())) {
 				JOptionPane.showMessageDialog(null, "Please fill out all required (*) fields.");
 			} else {
 				dispose();
-				UserInfo.setPNummer(userPnrText.getText());
-				UserInfo.setName(userNameText.getText());
-				UserInfo.setGroupName(gruppeNameText.getText());
+				UserInfo.setPNummer(StringUtils.trim(userPnrText.getText()));
+				UserInfo.setName(StringUtils.trim(userNameText.getText()));
+				UserInfo.setGroupName(StringUtils.trim(gruppeNameText.getText()));
 				RegistrationHandler regHandler = new RegistrationHandler();
 
 				try {
