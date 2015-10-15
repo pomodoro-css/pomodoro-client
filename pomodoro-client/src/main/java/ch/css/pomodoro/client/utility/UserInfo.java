@@ -16,6 +16,8 @@ public class UserInfo {
 	private static String gruppe;
 
 	private static PollUserStatus pollUser;
+
+	private static TrayIcon trayIcon;
 	
 
 	public UserInfo(String pNr, String name, String gruppe, TrayIcon tIcon) {
@@ -61,5 +63,20 @@ public class UserInfo {
 		}
 		return pollUser;
 	}
+	
+	public static void clearPollUserStatus(){
+		pollUser = null;
+	}
+	
+
+	public static void setTrayIcon(TrayIcon tIcon) {
+		trayIcon = tIcon;
+	}
+	
+	public static TrayIcon getTrayIcon() {
+		return trayIcon;
+	}
+	
+
 
 }

@@ -55,6 +55,7 @@ public class PomodoroTrayIconUI {
 
 		try {
 			tray.add(trayIcon);
+			UserInfo.setTrayIcon(trayIcon);
 		} catch (AWTException e) {
 			System.out.println("TrayIcon could not be added.");
 			return;
@@ -103,7 +104,7 @@ public class PomodoroTrayIconUI {
 					JOptionPane.showMessageDialog(null, "Please register first");
 
 				} else {
-					final StopTimerHandler stopHandler = new StopTimerHandler(trayIcon);
+					final StopTimerHandler stopHandler = new StopTimerHandler();
 
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
@@ -127,7 +128,7 @@ public class PomodoroTrayIconUI {
 				if (!UserInfo.exist()) {
 					JOptionPane.showMessageDialog(null, "Please register first");
 				} else {
-					final StartTimerHandler startTimer = new StartTimerHandler(trayIcon);
+					final StartTimerHandler startTimer = new StartTimerHandler();
 
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {

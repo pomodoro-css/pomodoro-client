@@ -43,7 +43,7 @@ public class PollRemainingTimeService {
 			logger.error("Json Mapping Exception: /n" + e.getMessage());
 		} catch (IOException e) {
 			logger.error("I/O Exception: /n" + e.getMessage());
-		}
+		} 
 		return 0;
 	}
 
