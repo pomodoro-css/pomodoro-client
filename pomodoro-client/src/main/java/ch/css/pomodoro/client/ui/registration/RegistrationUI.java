@@ -83,11 +83,6 @@ public class RegistrationUI extends JFrame {
 		gruppeNameText.setBounds(110, 70, 160, 25);
 		panel.add(gruppeNameText);
 
-		// registerButton = new JButton("Register");
-		// registerButton.setBounds(185, 110, 80, 25);
-		// registerButton.addActionListener(new RegistrationActionListener());
-		// panel.add(registerButton);
-
 		registerButton = new JButton("Register");
 		registerButton.setBounds(10, 110, 100, 25);
 		registerButton.addActionListener(new RegistrationActionListener());
