@@ -66,6 +66,7 @@ public class UsersStatusUI extends JFrame {
 		};
 		dtm.setColumnIdentifiers(header);
 		JTable userTable = new JTable(dtm);
+		userTable.setRowHeight(30);
 		JScrollPane pane = new JScrollPane(userTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		pane.setPreferredSize(new Dimension(380, 330));

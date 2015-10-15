@@ -12,6 +12,7 @@ import java.io.UnsupportedEncodingException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,13 +72,15 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DeregistrationHandler deregHandler = new DeregistrationHandler();
 
-				try {
-					deregHandler.deregisterClient();
-				} catch (UnsupportedEncodingException ex) {
-					JOptionPane.showMessageDialog(null,
-							"Please don't use unkown symbols/characters.");
+				if (StringUtils.isNotBlank(UserInfo.getPNummer())) {
+					DeregistrationHandler deregHandler = new DeregistrationHandler();
+					try {
+						deregHandler.deregisterClient();
+					} catch (UnsupportedEncodingException ex) {
+						JOptionPane.showMessageDialog(null,
+								"Please don't use unkown symbols/characters.");
+					}
 				}
 
 				tray.remove(trayIcon);
