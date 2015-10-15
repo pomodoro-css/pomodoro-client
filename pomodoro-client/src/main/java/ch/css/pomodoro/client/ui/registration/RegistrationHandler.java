@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client.ui;
+package ch.css.pomodoro.client.ui.registration;
 
 import javax.swing.JOptionPane;
 

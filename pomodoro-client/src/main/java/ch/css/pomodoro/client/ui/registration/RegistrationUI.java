@@ -1,4 +1,4 @@
-package ch.css.pomodoro.client.ui;
+package ch.css.pomodoro.client.ui.registration;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

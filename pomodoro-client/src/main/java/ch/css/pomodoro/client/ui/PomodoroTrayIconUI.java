@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.css.pomodoro.client.ui.registration.RegistrationUI;
 import ch.css.pomodoro.client.utility.IconFactory;
 import ch.css.pomodoro.client.utility.VersionInfo;
 
