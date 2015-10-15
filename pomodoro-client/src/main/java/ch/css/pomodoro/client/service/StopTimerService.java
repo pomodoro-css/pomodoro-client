@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
+import ch.css.pomodoro.client.utility.UserInfo;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -15,10 +16,10 @@ public class StopTimerService {
 
 	private static Logger logger = LoggerFactory.getLogger(StopTimerService.class);
 
-	public boolean callStopTimerService(String pNummer) {
+	public boolean callStopTimerService() {
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
 		StringBuilder callUrl = new StringBuilder(basisURL);
-		callUrl.append("/" + pNummer);
+		callUrl.append(UserInfo.getPNummer());
 		callUrl.append("/stop");
 
 		logger.info(String.format("URL for StopTimer Service: %s", callUrl.toString()));
@@ -34,5 +35,4 @@ public class StopTimerService {
 		}
 		return true;
 	}
-
 }

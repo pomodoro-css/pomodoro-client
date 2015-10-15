@@ -4,7 +4,6 @@ import java.awt.TrayIcon;
 import java.awt.TrayIcon.MessageType;
 
 import ch.css.pomodoro.client.service.StopTimerService;
-import ch.css.pomodoro.client.utility.UserInfo;
 
 public class StopTimerHandler {
 
@@ -17,7 +16,7 @@ public class StopTimerHandler {
 	public void stopTimer() {
 		StopTimerService service = new StopTimerService();
 
-		boolean isSuccessful = service.callStopTimerService(UserInfo.getPNummer());
+		boolean isSuccessful = service.callStopTimerService();
 		if (isSuccessful) {
 			trayIcon.displayMessage("Stop timer", "Your timer has been stopped", MessageType.INFO);
 		} else {
