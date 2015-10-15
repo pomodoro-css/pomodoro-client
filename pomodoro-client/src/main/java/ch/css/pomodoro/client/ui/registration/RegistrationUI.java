@@ -116,8 +116,8 @@ public class RegistrationUI extends JFrame {
 				try {
 					regHandler.registerClient();
 				} catch (UnsupportedEncodingException e1) {
-					// TODO
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null,
+							"Please don't use unkown symbols/characters.");
 				}
 
 			}
