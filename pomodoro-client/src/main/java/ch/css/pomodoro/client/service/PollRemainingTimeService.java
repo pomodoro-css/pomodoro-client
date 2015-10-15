@@ -38,14 +38,11 @@ public class PollRemainingTimeService {
 			RegisteredUser user = mapper.readValue(responseSring, new TypeReference<RegisteredUser>(){});
 			return user.getRemainingTime();
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Json Parse Exception: /n" + e.getMessage());
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Json Mapping Exception: /n" + e.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("I/O Exception: /n" + e.getMessage());
 		}
 		return 0;
 	}
