@@ -13,7 +13,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import ch.css.pomodoro.client.utility.PomodoreSystemUtils;
@@ -38,14 +37,11 @@ public class StatusRegisteredUsersService {
 		try {
 			return mapper.readValue(responseSring, new TypeReference<List<RegisteredUser>>(){});
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Json Parse Exception: /n" + e.getMessage());
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Json Mapping Exception: /n" + e.getMessage());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("I/O Exception: /n" + e.getMessage());
 		}
 		return null;
 		

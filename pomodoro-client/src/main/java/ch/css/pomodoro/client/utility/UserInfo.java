@@ -1,7 +1,11 @@
 package ch.css.pomodoro.client.utility;
 
+import java.awt.TrayIcon;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ch.css.pomodoro.client.ui.background.PollUserStatus;
 
 public class UserInfo {
 
@@ -11,7 +15,10 @@ public class UserInfo {
 	private static String name;
 	private static String gruppe;
 
-	public UserInfo(String pNr, String name, String gruppe) {
+	private static PollUserStatus pollUser;
+	
+
+	public UserInfo(String pNr, String name, String gruppe, TrayIcon tIcon) {
 		setPNummer(pNr);
 		setName(name);
 		setGroupName(gruppe);
@@ -46,6 +53,13 @@ public class UserInfo {
 
 	public static void setGroupName(String gruppeName) {
 		gruppe = gruppeName;
+	}
+	
+	public static PollUserStatus getInstanceOfPollUserStatus(){
+		if (pollUser == null) {
+			pollUser = new PollUserStatus();
+		}
+		return pollUser;
 	}
 
 }
