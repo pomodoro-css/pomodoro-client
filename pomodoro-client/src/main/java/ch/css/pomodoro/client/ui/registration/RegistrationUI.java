@@ -110,6 +110,9 @@ public class RegistrationUI extends JFrame {
 					|| StringUtils.isBlank(userNameText.getText())
 					|| StringUtils.isBlank(gruppeNameText.getText())) {
 				JOptionPane.showMessageDialog(null, "Please fill out all required (*) fields.");
+			} else if (userPnrText.getText().length() <= 4) {
+				JOptionPane.showMessageDialog(null,
+						"Your P-Number should have at least 5 characters");
 			} else {
 				dispose();
 				UserInfo.setPNummer(StringUtils.trim(userPnrText.getText()));

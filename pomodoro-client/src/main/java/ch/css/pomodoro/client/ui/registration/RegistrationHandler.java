@@ -13,7 +13,7 @@ public class RegistrationHandler {
 		int responseCode = regService.callRegistrationService();
 
 		if (responseCode == 500) {
-			JOptionPane.showMessageDialog(null, "Your P-Number should have at least 5 characters");
+			JOptionPane.showMessageDialog(null, "Your P-Number should have at least 5 characters.");
 		} else if (responseCode == 304) {
 			JOptionPane.showMessageDialog(null, "Your are already registered!");
 		} else {

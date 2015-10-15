@@ -5,7 +5,6 @@ import java.net.URLEncoder;
 
 import javax.ws.rs.core.MediaType;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +21,9 @@ public class RegistrationService {
 	public int callRegistrationService() throws UnsupportedEncodingException {
 		String basisURL = PomodoreSystemUtils.getBasisUrl();
 		StringBuilder callUrl = new StringBuilder(basisURL);
-		callUrl.append("?nr=" + UserInfo.getPNummer());
+		callUrl.append("?nr=" + URLEncoder.encode(UserInfo.getPNummer(), "UTF-8"));
 		callUrl.append("&name=" + URLEncoder.encode(UserInfo.getName(), "UTF-8"));
-		if (StringUtils.isNotBlank(UserInfo.getGroupName())) {
-			callUrl.append("&group=" + URLEncoder.encode(UserInfo.getGroupName(), "UTF-8"));
-		}
+		callUrl.append("&group=" + URLEncoder.encode(UserInfo.getGroupName(), "UTF-8"));
 
 		logger.info(String.format("URL for Registration Service: %s", callUrl.toString()));
 
