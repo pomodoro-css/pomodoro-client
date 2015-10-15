@@ -5,6 +5,7 @@ import java.awt.MenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
+import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -104,7 +105,8 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "I am busy now!");
+				trayIcon.displayMessage("Start", "Starting timer with 25 Minutes", MessageType.INFO);
+				// JOptionPane.showMessageDialog(null, "I am busy now!");
 			}
 		});
 		return startTimer;
