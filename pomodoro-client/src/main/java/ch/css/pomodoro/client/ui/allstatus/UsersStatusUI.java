@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -47,12 +48,20 @@ public class UsersStatusUI extends JFrame {
 		this.add(pane);
 
 		this.setVisible(true);
-
 	}
 
+	@SuppressWarnings("serial")
 	private JScrollPane setupScrollableTable() {
 		String[] header = new String[] { "State", "Name", "P-Number", "Remaining Time" };
-		dtm = new DefaultTableModel(0, header.length + 1);
+		dtm = new DefaultTableModel(0, header.length + 1) {
+			@SuppressWarnings("unchecked")
+			@Override
+			public Class getColumnClass(int column) {
+				if (column == 0)
+					return ImageIcon.class;
+				return Object.class;
+			}
+		};
 		dtm.setColumnIdentifiers(header);
 		JTable userTable = new JTable(dtm);
 		JScrollPane pane = new JScrollPane(userTable, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -81,6 +90,7 @@ public class UsersStatusUI extends JFrame {
 	}
 
 	public void updateTableContent(String groupName) {
+		// clean table before adding data
 		dtm.setRowCount(0);
 		for (RegisteredUser user : groupedUsers.get(groupName)) {
 			logger.info(user.toString());

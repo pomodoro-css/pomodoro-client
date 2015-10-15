@@ -10,10 +10,10 @@ public class UserToGroupMapper {
 
 	private MultiMap<String, RegisteredUser> userGroupMap = new MultiMap<String, RegisteredUser>();
 
-	public MultiMap<String,RegisteredUser> mapToGroup(List<RegisteredUser> regUsers) {
+	public MultiMap<String, RegisteredUser> mapToGroup(List<RegisteredUser> regUsers) {
 
 		for (RegisteredUser registeredUser : regUsers) {
-			userGroupMap.add(registeredUser.getGroup(), registeredUser);
+			userGroupMap.add(registeredUser.getGroup().getName(), registeredUser);
 
 		}
 		return userGroupMap;

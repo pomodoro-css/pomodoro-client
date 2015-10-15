@@ -1,16 +1,17 @@
 package ch.css.pomodoro.client.service;
 
+import ch.css.pomodoro.client.utility.IconFactory;
+
 public class RegisteredUser {
 
 	private String nr;
-
 	private String name;
-	private String group;
+	private Group group;
 	private UserState state;
 	private int remainingTime;
 	private int tomatoTime;
-
 	private String startTime;
+	private String taskName;
 
 	public String getNr() {
 		return nr;
@@ -24,11 +25,11 @@ public class RegisteredUser {
 		this.name = name;
 	}
 
-	public String getGroup() {
+	public Group getGroup() {
 		return group;
 	}
 
-	public void setGroup(String group) {
+	public void setGroup(Group group) {
 		this.group = group;
 	}
 
@@ -68,8 +69,15 @@ public class RegisteredUser {
 		return tomatoTime;
 	}
 
+	public String getRemainingTimeInMinAndSec() {
+		String min = String.valueOf(getRemainingTime() / 60);
+		String sec = String.valueOf(getRemainingTime() % 60);
+		return min + " min " + sec + " sec";
+	}
+
 	public Object[] getUserRow() {
-		return new Object[] { getState(), getName(), getNr(), getRemainingTime() };
+		return new Object[] { IconFactory.getStateIcon(getState().name()), getName(), getNr(),
+				getRemainingTimeInMinAndSec() };
 	}
 
 	@Override
@@ -77,5 +85,13 @@ public class RegisteredUser {
 		return "RegisteredUser [nr=" + nr + ", name=" + name + ", group=" + group + ", state="
 				+ state + ", remainingTime=" + remainingTime + ", tomatoTime=" + tomatoTime
 				+ ", startTime=" + startTime + "]";
+	}
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
 	}
 }
