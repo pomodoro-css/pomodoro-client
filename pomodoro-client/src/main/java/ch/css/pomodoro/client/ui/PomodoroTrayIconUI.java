@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.css.pomodoro.client.ui.allstatus.UsersStatusUI;
+import ch.css.pomodoro.client.ui.exit.DeregistrationHandler;
 import ch.css.pomodoro.client.ui.registration.RegistrationUI;
 import ch.css.pomodoro.client.ui.start.StartTimerHandler;
 import ch.css.pomodoro.client.ui.stop.StopTimerHandler;
@@ -70,8 +71,18 @@ public class PomodoroTrayIconUI {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				DeregistrationHandler deregHandler = new DeregistrationHandler();
+
+				try {
+					deregHandler.deregisterClient();
+				} catch (UnsupportedEncodingException ex) {
+					JOptionPane.showMessageDialog(null,
+							"Please don't use unkown symbols/characters.");
+				}
+
 				tray.remove(trayIcon);
 				logger.info("Closing down Pomodoro Timer");
+
 				System.exit(0);
 			}
 		});
