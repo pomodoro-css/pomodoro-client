@@ -7,6 +7,7 @@ import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -108,7 +109,12 @@ public class PomodoroTrayIconUI {
 
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							stopHandler.stopTimer();
+							try {
+								stopHandler.stopTimer();
+							} catch (UnsupportedEncodingException e) {
+								JOptionPane.showMessageDialog(null,
+										"Please don't use unkown symbols/characters.");
+							}
 						}
 					});
 				}
@@ -132,7 +138,12 @@ public class PomodoroTrayIconUI {
 
 					SwingUtilities.invokeLater(new Runnable() {
 						public void run() {
-							startTimer.startTimer();
+							try {
+								startTimer.startTimer();
+							} catch (UnsupportedEncodingException e) {
+								JOptionPane.showMessageDialog(null,
+										"Please don't use unkown symbols/characters.");
+							}
 						}
 					});
 				}

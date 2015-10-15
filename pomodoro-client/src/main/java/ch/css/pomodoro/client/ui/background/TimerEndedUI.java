@@ -1,6 +1,7 @@
 package ch.css.pomodoro.client.ui.background;
 
 import java.awt.Component;
+import java.io.UnsupportedEncodingException;
 
 import javax.swing.JOptionPane;
 
@@ -19,10 +20,11 @@ public class TimerEndedUI {
 		logger.info("Timer ended UI!");
 	}
 
-	public void showTimerEndedUI() {
-		int result = JOptionPane.showConfirmDialog((Component) null, "Your tomato time has expired, congratulations! Another Tomato Time for you?",
-		        "alert", JOptionPane.YES_NO_OPTION);
-		if (result == 0){
+	public void showTimerEndedUI() throws UnsupportedEncodingException {
+		int result = JOptionPane.showConfirmDialog((Component) null,
+				"Your tomato time has expired, congratulations! Another Tomato Time for you?",
+				"alert", JOptionPane.YES_NO_OPTION);
+		if (result == 0) {
 			logger.info("User wants more tomatos: " + String.valueOf(result));
 			UserInfo.clearPollUserStatus();
 			StartTimerHandler newStart = new StartTimerHandler();
@@ -32,8 +34,7 @@ public class TimerEndedUI {
 			stopTimer.stopTimer();
 			logger.info("User has enough tomatos: " + String.valueOf(result));
 		}
-		
-	}
 
+	}
 
 }
